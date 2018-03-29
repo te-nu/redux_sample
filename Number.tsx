@@ -11,18 +11,28 @@ import { Store } from 'redux';
 // export default Number
 
 interface props {
-    store: Store<any>;
+    store: Store<any>
 }
 
 export default class Number extends React.Component<props> {
+    state = {
+        displayNumber: 0
+    }
+
+    componentDidMount() {
+        this.props.store.subscribe(() => {
+            this.setState({displayNumber: this.props.store.getState()['displayNumber']});
+        })
+    }
+
     render() {
         return <div>
-            <button onClick={this.clickclick}></button>
-            <h1>{ this.props.store.getState()['displayNumber'] }</h1>
+            <button onClick={this.clickAdd}>インクリメント</button>
+            <h1>{ this.state.displayNumber }</h1>
         </div>
     }
 
-    clickclick() {
+    clickAdd = () => {
         this.props.store.dispatch(addCount(2))
     }
 }
