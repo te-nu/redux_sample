@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, Store } from 'redux'
 import counter from './reducers'
-import Number from './Number'
+import IncrementNumber from './IncrementNumber'
 // import { addCount } from './actions';
 
 let store: Store<any> = createStore(counter)
@@ -11,7 +11,7 @@ let store: Store<any> = createStore(counter)
 render(
   <div>
     <Provider store={store}>
-      <Number store={store}/>
+      <IncrementNumber />
     </Provider>
   </div>,
   document.getElementById('app')
