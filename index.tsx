@@ -4,15 +4,21 @@ import { Provider } from 'react-redux'
 import { createStore, Store } from 'redux'
 import counter from './reducers'
 import IncrementNumber from './IncrementNumber'
-// import { addCount } from './actions';
+import { ThemeProvider } from 'styled-components';
+import ThemeInterface from './theme';
 
 let store: Store<any> = createStore(counter)
 
+const theme: ThemeInterface = {
+  fatalColor: '#BB0000',
+  warnColor: '#CCCC00'
+};
+
 render(
-  <div>
+  <ThemeProvider theme={theme}>
     <Provider store={store}>
       <IncrementNumber />
     </Provider>
-  </div>,
+  </ThemeProvider>,
   document.getElementById('app')
 )

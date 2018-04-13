@@ -1,8 +1,8 @@
-import Number, { props, events } from "./Number";
+import Number, { Props, events } from "./Number";
 import { connect } from "react-redux";
 import { addCount } from "./actions";
 
-const mapStateToProps = (state): props => {
+const mapStateToProps = (state): Props => {
     return {displayNumber: state.displayNumber, buttonText: "increment"}
 }
 const mapDispatchToProps = (dispatch): events => {
